@@ -14,7 +14,7 @@ namespace AILab_1.Utils.OutputHelper
             foreach (char charecter in inputString)
             {
                 Console.Write(charecter);
-                Thread.Sleep(150);
+                Thread.Sleep(100);
             }
             Console.WriteLine();
         }
