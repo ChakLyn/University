@@ -1,0 +1,104 @@
+﻿{
+  "PartDictionary": {
+    "Велосипед": {
+      "VarianList": [ "Колеса", "Сиденье", "Рама", "Механизмы" ],
+      "Cost": 10,
+      "AndFlag": 1
+    },
+    "Колеса": {
+      "VarianList": [ "Шипованные", "Не шипованные" ],
+      "Cost": 5,
+      "AndFlag": 0
+    },
+    "Шипованные": {
+      "VarianList": [],
+      "Cost": 20,
+      "AndFlag": 0
+    },
+    "Не шипованные": {
+      "VarianList": [],
+      "Cost": 10,
+      "AndFlag": 0
+    },
+    "Сиденье": {
+      "VarianList": [ "Кожанное", "Синтетическое" ],
+      "Cost": 5,
+      "AndFlag": 0
+    },
+    "Кожанное": {
+      "VarianList": [],
+      "Cost": 30,
+      "AndFlag": 0
+    },
+    "Синтетическое": {
+      "VarianList": [],
+      "Cost": 15,
+      "AndFlag": 0
+    },
+    "Рама": {
+      "VarianList": [ "Металическая", "Деревянная" ],
+      "Cost": 8,
+      "AndFlag": 0
+    },
+    "Металическая": {
+      "VarianList": [],
+      "Cost": 40,
+      "AndFlag": 0
+    },
+    "Деревянная": {
+      "VarianList": [],
+      "Cost": 20,
+      "AndFlag": 0
+    },
+    "Двигательная система": {
+      "VarianList": [ "Педали", "Двигатель" ],
+      "Cost": 8,
+      "AndFlag": 0
+    },
+    "Педали": {
+      "VarianList": [],
+      "Cost": 15,
+      "AndFlag": 0
+    },
+    "Двигатель": {
+      "VarianList": [ "Дизельный", "Электрический" ],
+      "Cost": 30,
+      "AndFlag": 0
+    },
+    "Дизельный": {
+      "VarianList": [],
+      "Cost": 18,
+      "AndFlag": 0
+    },
+    "Электрический": {
+      "VarianList": [],
+      "Cost": 45,
+      "AndFlag": 0
+    },
+    "Механизмы": {
+      "VarianList": [ "Зеркало заднего вида", "Багажник" ],
+      "Cost": 8,
+      "AndFlag": 1
+    },
+    "Зеркало заднего вида": {
+      "VarianList": [ "1 зеркало", "2 зеркала" ],
+      "Cost": 5,
+      "AndFlag": 0
+    },
+    "1 зеркало": {
+      "VarianList": [],
+      "Cost": 8,
+      "AndFlag": 0
+    },
+    "2 зеркала": {
+      "VarianList": [],
+      "Cost": 16,
+      "AndFlag": 0
+    },
+    "Багажник": {
+      "VarianList": [],
+      "Cost": 5,
+      "AndFlag": 0
+    }
+  }  
+}

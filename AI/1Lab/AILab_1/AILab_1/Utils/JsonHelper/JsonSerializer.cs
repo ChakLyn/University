@@ -12,14 +12,18 @@ namespace AILab_1.Utils.JsonHelper
     {
         public static DialogPhrases DeserializeDialogPhrases(string jsonString)
         {
-            DialogPhrases prases = JsonConvert.DeserializeObject<DialogPhrases>(jsonString);
-            return prases;
+            return JsonConvert.DeserializeObject<DialogPhrases>(jsonString);
         }
 
-        public static Dictionary<int,double> DeserializeDiscreteRandomDictionary (string jsonString)
+        public static Dictionary<int, double> DeserializeDiscreteRandomDictionary(string jsonString)
         {
-            Dictionary<int, double> dictionary = JsonConvert.DeserializeObject<Dictionary<int, double>>(jsonString);
-            return dictionary;
+            return JsonConvert.DeserializeObject<Dictionary<int, double>>(jsonString);
+        }
+
+        public static Parts DeserializeLinkerParts(string jsonString)
+        {
+            Parts parts = JsonConvert.DeserializeObject<Parts>(jsonString);
+            return parts;
         }
     }
 }

@@ -8,9 +8,10 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>AILab_1</RootNamespace>
     <AssemblyName>AILab_1</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -46,7 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AI\Core\DialogCore.cs" />
+    <Compile Include="AI\Core\ComposerCore.cs" />
     <Compile Include="AI\Models\DialogPhrases.cs" />
+    <Compile Include="AI\Models\Enums\RouteSelectorEnum.cs" />
+    <Compile Include="AI\Models\PartModel.cs" />
+    <Compile Include="AI\Models\Parts.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\JsonHelper\JsonSerializer.cs" />
@@ -60,6 +65,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\DiscreteRandomTable.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ComposerList.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
