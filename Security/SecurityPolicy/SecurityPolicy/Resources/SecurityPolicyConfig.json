@@ -1,0 +1,34 @@
+﻿{
+  "Users": [
+    {
+      "IdUser": "Adnrew_User",
+      "IsAdmin": true
+    },
+    {
+      "IdUser": "John",
+      "IsAdmin": false
+    },
+    {
+      "IdUser": "Mike",
+      "IsAdmin": false
+    },
+    {
+      "IdUser": "Jerremy",
+      "IsAdmin": false
+    },
+    {
+      "IdUser": "Bonny",
+      "IsAdmin": false
+    },
+    {
+      "IdUser": "Gordon",
+      "IsAdmin": false
+    },
+    {
+      "IdUser": "Michel",
+      "IsAdmin": false
+    }
+  ],
+  "Rights": ["read", "write", "exectute", "grant"],
+  "Objects": ["game.exe", "text.txt", "image.png", "code.cs", "insatall.exe", "wordfile.doc"]
+}
