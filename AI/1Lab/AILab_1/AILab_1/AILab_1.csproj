@@ -48,8 +48,11 @@
   <ItemGroup>
     <Compile Include="AI\Core\DialogCore.cs" />
     <Compile Include="AI\Core\ComposerCore.cs" />
+    <Compile Include="AI\Core\InheritanceCore.cs" />
     <Compile Include="AI\Models\DialogPhrases.cs" />
     <Compile Include="AI\Models\Enums\RouteSelectorEnum.cs" />
+    <Compile Include="AI\Models\InheritanceNodeModel.cs" />
+    <Compile Include="AI\Models\InheritanceTree.cs" />
     <Compile Include="AI\Models\PartModel.cs" />
     <Compile Include="AI\Models\Parts.cs" />
     <Compile Include="Program.cs" />
