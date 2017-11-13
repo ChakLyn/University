@@ -12,6 +12,6 @@ namespace AILab_1.AI.Models
         public string Name { get; set; }
         public Dictionary<string, string> Fields { get; set; } = new Dictionary<string, string>();
         public Dictionary<string, string> InheritaedField { get; set; } = new Dictionary<string, string>();
-        public List<InheritanceNodeModel> Childs { get; set; } = new List<InheritanceNodeModel>();
+        public List<string> Childs { get; set; } = new List<string>();
     }
 }

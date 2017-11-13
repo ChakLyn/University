@@ -9,7 +9,10 @@ namespace AILab_1.AI.Models
 {
     public class InheritanceTree
     {
-        public Dictionary<InheritanceNodeModel, List<InheritanceNodeModel>> Tree { get; set; }
-            = new Dictionary<InheritanceNodeModel, List<InheritanceNodeModel>>();
+        public List<InheritanceNodeModel> Elements { get; set; }
+        = new List<InheritanceNodeModel>();
+
+        //public Dictionary<InheritanceNodeModel, List<InheritanceNodeModel>> Tree { get; set; }
+        //    = new Dictionary<InheritanceNodeModel, List<InheritanceNodeModel>>();
     }
 }

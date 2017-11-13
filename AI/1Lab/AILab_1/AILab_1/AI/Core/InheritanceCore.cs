@@ -11,6 +11,11 @@ namespace AILab_1.AI.Core
     {
         private InheritanceTree _tree = new InheritanceTree();
 
+        public InheritanceCore(InheritanceTree tree)
+        {                
+            _tree = tree;
+        }
+
         public void StartInheritanceCore()
         {
             bool exitFlag = true;
@@ -28,7 +33,7 @@ namespace AILab_1.AI.Core
                             Console.Write("Enter the name of the frame: ");
                             string findFrameName = Console.ReadLine();
 
-                            InheritanceNodeModel bufTreeElement = _tree.Tree.Keys.FirstOrDefault(item => item.Name == findFrameName);
+                            InheritanceNodeModel bufTreeElement = _tree.Elements.FirstOrDefault(item => item.Name == findFrameName);
 
                             if (bufTreeElement != null)
                             {
@@ -40,6 +45,11 @@ namespace AILab_1.AI.Core
                                 Console.WriteLine($"I am soryy, but there is not such frame \"{findFrameName}\"");
                             }
 
+                            break;
+                        }
+                    case "add attribute":
+                        {
+                            UpdateAttribute(_tree.Elements.FirstOrDefault(), true);
                             break;
                         }
                     case "set forall":
@@ -92,9 +102,7 @@ namespace AILab_1.AI.Core
                     case "add frame":
                         {
                             var newNode = CreateNode(treeElement);
-                            _tree.Tree[treeElement].Add(newNode);
-                            _tree.Tree.Add(newNode, new List<InheritanceNodeModel>());
-
+                            _tree.Elements.Add(newNode);
                             break;
                         }
                     case "add attribute":
@@ -154,7 +162,7 @@ namespace AILab_1.AI.Core
         {
             Console.Write("Enter name of the attribute: ");
             string atrbt = Console.ReadLine();
-            if (!_tree.Tree.Select(item => item.Key.Fields.ContainsKey(atrbt)).Contains(true))
+            if (!_tree.Elements.Select(item => item.Fields.ContainsKey(atrbt)).Contains(true))
             {
                 Console.WriteLine("\nThere is not such attributes");
                 return;
@@ -163,18 +171,17 @@ namespace AILab_1.AI.Core
             Console.Write($"Enter value for {atrbt}:");
             string valueAtr = Console.ReadLine();
 
-            _tree.Tree.Select(item =>
+            foreach(var item in _tree.Elements)
             {
-                SetFrameAttribute(item.Key, atrbt, valueAtr);
-                return item.Key;
-            });
+                SetFrameAttribute(item, atrbt, valueAtr);
+            }
         }
 
-        private void UpdateAttribute(InheritanceNodeModel node)
+        private void UpdateAttribute(InheritanceNodeModel node, bool addFlag = false)
         {
             Console.Write("Enter name of the attribute: ");
             string atrbt = Console.ReadLine();
-            if (node.Fields.ContainsKey(atrbt) && node.InheritaedField.ContainsKey(atrbt))
+            if (!addFlag && (node.Fields.ContainsKey(atrbt) && node.InheritaedField.ContainsKey(atrbt)))
             {
                 Console.WriteLine("\nThere is not such attributes");
                 return;
@@ -182,18 +189,37 @@ namespace AILab_1.AI.Core
 
             Console.Write($"Enter value for {atrbt}:");
             string valueAtr = Console.ReadLine();
-            SetFrameAttribute(node, atrbt, valueAtr);
+
+            switch (addFlag)
+            {
+                case false:
+                    {
+                        SetFrameAttribute(node, atrbt, valueAtr);
+                        break;
+                    }
+                case true:
+                    {
+                        SetFrameAttribute(node, atrbt, valueAtr, true);
+                        break;
+                    }
+            }
         }
 
-        private void SetFrameAttribute(InheritanceNodeModel model, string atrbt, string valueAtr)
+        private void SetFrameAttribute(InheritanceNodeModel model, string atrbt, string valueAtr, bool addFlag = false, int counter = 0)
         {
-            try
-            {
+            if (model.Fields.ContainsKey(atrbt) || (addFlag && counter <1))
                 model.Fields[atrbt] = valueAtr;
-            }
-            catch (KeyNotFoundException)
-            {
+            if (model.InheritaedField.ContainsKey(atrbt) || (addFlag && counter >= 1))
                 model.InheritaedField[atrbt] = valueAtr;
+            if (model.Childs.Count >= 1)
+            {
+                foreach(var child in model.Childs)
+                {
+                    if (addFlag)
+                        SetFrameAttribute(_tree.Elements.Where(item => item.Name == child).FirstOrDefault(), atrbt, valueAtr, true, counter++);
+                    else
+                        SetFrameAttribute(_tree.Elements.Where(item => item.Name == child).FirstOrDefault(), atrbt, valueAtr);
+                }
             }
         }
 
@@ -220,6 +246,12 @@ namespace AILab_1.AI.Core
             {
                 Console.WriteLine(parent);
             }
+
+            Console.WriteLine($"Frame {node.Name} has such childs: ");
+            foreach (string child in node.Childs)
+            {
+                Console.WriteLine(child);
+            }
         }
 
         private InheritanceNodeModel CreateNode(InheritanceNodeModel parent = null)
@@ -234,7 +266,8 @@ namespace AILab_1.AI.Core
             {
                 treeNode.Parents.AddRange(parent.Parents);
                 treeNode.Parents.Add(parent.Name);
-                treeNode.InheritaedField = parent.Fields;
+                treeNode.InheritaedField.Union(parent.Fields);
+                treeNode.InheritaedField.Union(parent.InheritaedField);
             }
             treeNode.Fields.Union(EnterAttributes());
 

@@ -25,5 +25,10 @@ namespace AILab_1.Utils.JsonHelper
             Parts parts = JsonConvert.DeserializeObject<Parts>(jsonString);
             return parts;
         }
+
+        public static InheritanceTree DeserializeInheritanceTree(string jsonString)
+        {
+            return JsonConvert.DeserializeObject<InheritanceTree>(jsonString);
+        }
     }
 }

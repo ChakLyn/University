@@ -34,6 +34,13 @@ namespace AILab_1
                             dialogCore.StartDialog();
                             break;
                         }
+                    case "tree":
+                        {
+                            InheritanceTree tree = JsonSerializer.DeserializeInheritanceTree(GetJson("Resources\\InheritanceTree.json"));
+                            InheritanceCore core = new InheritanceCore(tree);
+                            core.StartInheritanceCore();
+                            break;
+                        }
                     case "composer":
                         {
                             try
