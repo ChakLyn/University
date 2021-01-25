@@ -1,7 +1,7 @@
 name: D
 
 on:
-  pull_request:
+  push:
     branches: [ Release ]
 
 jobs:
