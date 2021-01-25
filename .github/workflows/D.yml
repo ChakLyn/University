@@ -18,3 +18,12 @@ jobs:
         dotnet-version: 5.0.x
     - name: Build
       run: dotnet restore
+    - name: Create Release
+      uses: actions/create-release@v1
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: true
